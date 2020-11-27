@@ -7,7 +7,7 @@
       {{ Permiso.apellidosEmpleado }}
     </td>
     <td>
-      {{ Permiso.tipoPermiso }}
+      {{ Permiso.fkTipoPermiso.descripcion }}
     </td>
     <td>
       {{ Permiso.fechaPermiso }}

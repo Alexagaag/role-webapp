@@ -30,24 +30,25 @@
      id="input-group-3" 
     label="Tipo de permiso:" 
     label-for="input-3">
-      <b-form-input
+      <b-form-select
         id="input-3"
         v-model="Permiso.tipoPermiso" 
-        type="number"
         required
-        placeholder="Inntroduzca el código del tipo de permiso"
-      ></b-form-input>
+        placeholder="Introduzca el tipo de permiso"
+        :options="options"
+      ></b-form-select>
     </b-form-group>
 
         <b-form-group
      id="input-group-4" 
     label="Fecha permiso:" 
     label-for="input-4">
-      <b-form-input
+      <b-form-input 
         id="input-4"
         v-model="Permiso.fechaPermiso" 
         required
-        type="date"
+        type="date"        
+        v-el:date
       ></b-form-input>
     </b-form-group>
 
@@ -66,8 +67,8 @@ import axios from 'axios'
 export default {
   name: "BodyAdd",
   props:{
-    Permiso: {type:Object}
-      
+    Permiso: {type:Object},
+      options:{type:Array}
   }
   ,
   methods: {
@@ -96,6 +97,6 @@ export default {
           this.show = true
         })
       }
-    },
+    }
 }
 </script>

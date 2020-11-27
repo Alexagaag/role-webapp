@@ -21,3 +21,8 @@ CREATE TABLE RWA.Permiso
 	FechaPermiso Date NOT NULL,
 );
 
+insert into RWA.TipoPermiso (Descripcion) values ('Permiso General');
+insert into RWA.TipoPermiso (Descripcion) values ('Maternidad');
+insert into RWA.TipoPermiso (Descripcion) values ('Enfermedad');
+insert into RWA.TipoPermiso (Descripcion) values ('Viaje importante');
+insert into RWA.TipoPermiso (Descripcion) values ('Luto');

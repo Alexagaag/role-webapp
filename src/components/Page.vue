@@ -22,6 +22,7 @@
       v-if="ShowAdd"
       :Permiso="Permisoform"
       style="margin-left: 30%"
+      :options="options"
     ></BodyAdd>
     <div class="footer" id="Footer">
       <b-navbar type="dark" variant="primary">
@@ -47,12 +48,13 @@ export default {
     return {
       Permisos: [],
       Permisoform: {
-        id : 0,
+        id: 0,
         nombreEmpleado: "",
         apellidosEmpleado: "",
         tipoPermiso: null,
         fechaPermiso: null,
       },
+      options: [],
     };
   },
 
@@ -66,7 +68,13 @@ export default {
         this.Permisos = response.data;
       });
     },
-
+    getOptions() {
+      axios
+        .get("https://localhost:44398/Permisos/GetAllTipoPermiso")
+        .then((response) => {
+          this.options = response.data;
+        });
+    },
     FShowConsulta() {
       this.ShowConsulta = true;
       this.ShowAdd = false;
@@ -80,8 +88,10 @@ export default {
       this.Permisoform.fechaPermiso = null;
       this.ShowConsulta = false;
       this.ShowAdd = true;
+      this.getOptions();
     },
     EditPermiso(Per) {
+      console.log(Per.fechaPermiso);
       this.Permisoform.nombreEmpleado = Per.nombreEmpleado;
       this.Permisoform.apellidosEmpleado = Per.apellidosEmpleado;
       this.Permisoform.tipoPermiso = Per.tipoPermiso;
@@ -90,6 +100,9 @@ export default {
       this.ShowConsulta = false;
       this.ShowAdd = true;
     },
+  },
+  created: function () {
+    this.getOptions();
   },
 };
 </script>
