@@ -32,6 +32,10 @@ namespace RoleWebApp.DataBase.DataAcces
                 try
                 {
                     List<Permiso> result = ctx.Permiso.ToList();
+                    foreach(var res in result)
+                    {
+                        res.FkTipoPermiso = ctx.TipoPermiso.First(x => x.Id == res.TipoPermiso);
+                    }
                     return result;
                 }
                 catch (Exception e)

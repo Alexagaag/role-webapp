@@ -29,13 +29,18 @@ namespace RoleWebApp.DataBase.DataAcces
                 }
             }
         }
-        public List<TipoPermiso> GetAll()
+        public List<VmSelectList> GetAll()
         {
             using (RWAEntities ctx = new RWAEntities(GetConnection()))
             {
                 try
                 {
-                    List<TipoPermiso> result = ctx.TipoPermiso.ToList();
+                    List<VmSelectList> result = new List<VmSelectList> { };
+                    List<TipoPermiso> data = ctx.TipoPermiso.ToList();
+                    foreach(var item in data)
+                    {
+                        result.Add(new VmSelectList { value = item.Id, text = item.Descripcion });
+                    }
                     return result;
                 }
                 catch (Exception e)

@@ -32,7 +32,11 @@ namespace RoleWebApp.Controllers.RoleWebApp
         {
             return new PermisosDA().GetAll();
         }
-
+        [Route("GetAllTipoPermiso"), HttpGet]
+        public List<VmSelectList> GetAllTipoPermiso()   
+        {
+            return new TipoPermisoDA().GetAll();
+        }
         [Route("Delete"), HttpPost]
         public bool Delete(Permiso value)
         {
